@@ -15,6 +15,9 @@ sudo insmod /lib/modules/pl2303.ko
 sudo wget https://github.com/alexcodito/SynologyZigbee/raw/main/drivers/ti_usb_3410_5052.ko
 sudo insmod /lib/modules/ti_usb_3410_5052.ko
 
+# Check that the USB device appears by running: dmesg | grep ttyUSB0
+# The following message should appear:  "usb 1-1: cp210x converter now attached to ttyUSB0"
+
 # Configure an autoload script
 
 cd  /usr/local/etc/rc.d/

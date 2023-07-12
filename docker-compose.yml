@@ -1,0 +1,31 @@
+version: "3.8"
+services:
+  # Mosquitto
+  mqtt:
+    container_name: mosquitto
+    image: eclipse-mosquitto:latest
+    network_mode: bridge
+    restart: unless-stopped
+    volumes:
+      - ./mosquitto-data:/mosquitto
+    ports:
+      - 1883:1883
+      - 9001:9001
+    command: "mosquitto -c /mosquitto.conf"
+
+  # Zigbee2MQTT
+  zigbee2mqtt:
+    container_name: zigbee2mqtt
+    image: koenkk/zigbee2mqtt:latest
+    network_mode: bridge
+    restart: unless-stopped
+    volumes:
+      - ./data:/app/data
+      - /run/udev:/run/udev:ro
+    ports:
+      # Frontend port
+      - 8020:8020
+    environment:
+      - TZ=Europe/Amsterdam
+    devices:
+      - /dev/ttyUSB0
