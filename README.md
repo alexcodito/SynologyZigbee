@@ -3,7 +3,7 @@
 
 ### Steps in order:
 
-1. Run install_usb_drivers.sh
+1. Run install_usb_drivers.sh (Update the drivers path to the required version)
 1. Run install_zigbee2mqtt.sh (or run docker compose)
 1. Stop Zigbee2MQTT in docker
 1. Set required params\* in configuration.yaml
